@@ -14,7 +14,8 @@ using System.Web.Http;
 
 namespace SinglePageWebApp.Controllers
 {
-    [Authorize]
+    [BasicAuthentication]
+    //[Authorize]
     public class MeController : ApiController
     {
         private ApplicationUserManager _userManager;
@@ -43,7 +44,8 @@ namespace SinglePageWebApp.Controllers
         // GET api/Me
         public GetViewModel Get()
         {
-            var user = UserManager.FindById(User.Identity.GetUserId());
+             
+            var user = UserManager.FindByName(User.Identity.Name);
             return new GetViewModel() { Hometown = user.Hometown };
         }
     }
