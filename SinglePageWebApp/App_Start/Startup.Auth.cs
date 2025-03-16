@@ -53,9 +53,20 @@ namespace SinglePageWebApp
                     // This is a security feature which is used when you change a password or add an external login to your account.  
                     OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, ApplicationUser>(
                         validateInterval: TimeSpan.FromMinutes(20),
-                        regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
+                        regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager)),
+                            // Add this handler to prevent redirects for API requests
+             /*           OnApplyRedirect = context =>
+                        {
+                            if (!context.Request.Uri.LocalPath.StartsWith("/api", StringComparison.OrdinalIgnoreCase))
+                            {
+                                context.Response.Redirect(context.RedirectUri);
+                            }
+                            // Do not redirect API requests
+                        }*/
                 }
             });
+
+
             // Use a cookie to temporarily store information about a user logging in with a third party login provider
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
@@ -69,6 +80,13 @@ namespace SinglePageWebApp
 
             // Enable the application to use bearer tokens to authenticate users
             app.UseOAuthBearerTokens(OAuthOptions);
+
+           
+           
+      
+
+                // Other middleware (such as external login providers) can be added here.
+            
 
             // Uncomment the following lines to enable logging in with third party login providers
             //app.UseMicrosoftAccountAuthentication(
