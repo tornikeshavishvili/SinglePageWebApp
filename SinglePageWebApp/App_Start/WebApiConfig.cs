@@ -5,7 +5,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
+using System.Web.Http.WebHost;
+using System.Web.Routing;
+using System.Web.SessionState; 
+using System.Web.Http.Controllers;
+using System.Web.Http.Routing;
+using System.Collections.Generic;
+using System.Web.Http.Controllers;
+using System.Web.Http.Routing;
 
 namespace SinglePageWebApp
 {
@@ -24,14 +33,15 @@ namespace SinglePageWebApp
             // Use camel case for JSON data.
             config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 
-            // Web API routes
+            // Enable attribute routing
             config.MapHttpAttributeRoutes();
 
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+            // Remove the default route
+            //config.Routes.MapHttpRoute(
+            //    name: "DefaultApi",
+            //    routeTemplate: "api/{controller}/{id}",
+            //    defaults: new { id = RouteParameter.Optional }
+            //);
         }
     }
 }
