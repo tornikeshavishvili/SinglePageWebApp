@@ -12,11 +12,11 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
-using System.Web.Http.Results;
-using System.Web.Mvc;
+using System.Web.Http.Results; 
 
 namespace SinglePageWebApp.Controllers {
 
+    [RoutePrefix("api/you")]
     [BasicAuthentication]
     //[System.Web.Http.Authorize]
     public class YouController : ApiController
@@ -27,12 +27,16 @@ namespace SinglePageWebApp.Controllers {
         {
         }
 
-        // GET api/You
-        [System.Web.Http.HttpPost]
+        // GET api/Me
+        [HttpPost]
+        [Route("MyFunction")] // Unique route
         public JsonResult<GetViewModel> MyFunction([FromBody] JObject myObject)
         {
-            
-            return Json(new GetViewModel() { Hometown = ((string)myObject.GetValue("myValue")) });
+
+
+            var keysCollection = System.Web.HttpContext.Current.Session.Keys.Count+"";
+
+            return Json(new GetViewModel() { Hometown = (keysCollection) });
              
         }
     }
