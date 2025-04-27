@@ -1,0 +1,123 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Feedback</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        fieldset {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        legend {
+            font-weight: bolder;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            font-weight: normal;
+            text-align: center;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        textarea {
+            width: calc( 100% - 20px );
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            resize: none;
+            max-width: unset;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <h1>Your feedback is value to us!</h1>
+        <form action="/Submit/Feedback" method="POST">
+            <fieldset>
+                <input type="hidden" name="hdn" value="my hidden value">
+                <legend>Transport</legend>
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>excellent</th>
+                        <th>good</th>
+                        <th>satisfactory</th>
+                        <th>poor</th>
+                    </tr>
+                    <tr>
+                        <td> <label for="drPer">Driver Performance:</label></td>
+
+                        <td><input type="radio" name="drPer" value="1"></td>
+                        <td><input type="radio" name="drPer" value="2"></td>
+                        <td><input type="radio" name="drPer" value="3"></td>
+                        <td><input type="radio" name="drPer" value="4"></td>
+                    </tr>
+
+                    <!-- <tr>
+            <th>excellent</th><th>good</th><th>satisfactory</th><th>poor</th>
+        </tr> -->
+                    <tr>
+                        <td> <label for="clean">Cleanliness:</label></td>
+                        <td><input type="radio" name="clean" value="1"></td>
+                        <td><input type="radio" name="clean" value="2"></td>
+                        <td><input type="radio" name="clean" value="3"></td>
+                        <td><input type="radio" name="clean" value="4"></td>
+                    </tr>
+
+                    <!-- <tr>
+            <th>excellent</th><th>good</th><th>satisfactory</th><th>poor</th>
+        </tr> -->
+                    <tr>
+                        <td><label for="safety">Safety:</label></td>
+                        <td><input type="radio" name="safety" value="1"></td>
+                        <td><input type="radio" name="safety" value="2"></td>
+                        <td><input type="radio" name="safety" value="3"></td>
+                        <td><input type="radio" name="safety" value="4"></td>
+                    </tr>
+                </table>
+                <br> <hr> <br>
+                <textarea name="transportComments"
+                          rows="7"
+                          cols="50"
+                          placeholder="Please provide any additional comments or suggestions here..."></textarea>
+            </fieldset>
+            <button type="submit" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px;">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

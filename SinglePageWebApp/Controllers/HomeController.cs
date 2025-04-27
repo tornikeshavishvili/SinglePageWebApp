@@ -15,7 +15,7 @@ namespace SinglePageWebApp.Controllers
 
         public ActionResult Contact()
         {
-            return View();
+            return View("Feedback");
         }
 
     }
